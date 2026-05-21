@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\projetos\\firecode\\asp-.net-8-crud\\BarbershopApi\\BarbershopApi.csproj": {}
+    "C:\\projetos\\firecode\\asp-.net-8-crud\\src\\BarbershopApi.csproj": {}
   },
   "projects": {
-    "C:\\projetos\\firecode\\asp-.net-8-crud\\BarbershopApi\\BarbershopApi.csproj": {
+    "C:\\projetos\\firecode\\asp-.net-8-crud\\src\\BarbershopApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projetos\\firecode\\asp-.net-8-crud\\BarbershopApi\\BarbershopApi.csproj",
+        "projectUniqueName": "C:\\projetos\\firecode\\asp-.net-8-crud\\src\\BarbershopApi.csproj",
         "projectName": "BarbershopApi",
-        "projectPath": "C:\\projetos\\firecode\\asp-.net-8-crud\\BarbershopApi\\BarbershopApi.csproj",
+        "projectPath": "C:\\projetos\\firecode\\asp-.net-8-crud\\src\\BarbershopApi.csproj",
         "packagesPath": "C:\\Users\\kkadoca\\.nuget\\packages\\",
-        "outputPath": "C:\\projetos\\firecode\\asp-.net-8-crud\\BarbershopApi\\obj\\",
+        "outputPath": "C:\\projetos\\firecode\\asp-.net-8-crud\\src\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,16 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.*, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.*, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
