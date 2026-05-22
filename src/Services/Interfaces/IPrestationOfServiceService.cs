@@ -1,15 +1,14 @@
 using BarbershopApi.Models;
 
-namespace BarbershopApi.Repositories.Interfaces;
+namespace BarbershopApi.Services.Interfaces;
 
-public interface IPrestationOfServiceRepository
+public interface IPrestationOfServiceService
 {
     Task<IEnumerable<PrestationOfService>> GetAllAsync();
     Task<PrestationOfService?> GetByIdAsync(int id);
     Task<IEnumerable<PrestationOfService>> GetByNameAsync(string name);
     Task<int> GetCountAsync();
-    Task<bool> ExistsByNameAsync(string name, int? excludeId = null);
-    Task AddAsync(PrestationOfService prestationOfService);
+    Task CreateAsync(PrestationOfService prestationOfService);
     Task UpdateAsync(PrestationOfService prestationOfService);
     Task DeleteAsync(int id);
 }

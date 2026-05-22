@@ -1,15 +1,14 @@
 using BarbershopApi.Models;
 
-namespace BarbershopApi.Repositories.Interfaces;
+namespace BarbershopApi.Services.Interfaces;
 
-public interface ICustomerRepository
+public interface ICustomerService
 {
     Task<IEnumerable<Customer>> GetAllAsync();
     Task<Customer?> GetByIdAsync(int id);
     Task<IEnumerable<Customer>> GetByNameAsync(string name);
     Task<int> GetCountAsync();
-    Task<bool> ExistsByEmailAsync(string email, int? excludeId = null);
-    Task AddAsync(Customer customer);
+    Task CreateAsync(Customer customer);
     Task UpdateAsync(Customer customer);
     Task DeleteAsync(int id);
 }

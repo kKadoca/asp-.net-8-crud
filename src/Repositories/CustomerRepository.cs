@@ -37,6 +37,12 @@ public class CustomerRepository : ICustomerRepository
         return await _context.Customers.CountAsync();
     }
 
+    public async Task<bool> ExistsByEmailAsync(string email, int? excludeId = null)
+    {
+        return await _context.Customers
+            .AnyAsync(c => c.Email == email && (excludeId == null || c.Id != excludeId));
+    }
+
     public async Task AddAsync(Customer customer)
     {
         await _context.Customers.AddAsync(customer);

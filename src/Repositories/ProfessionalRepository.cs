@@ -37,6 +37,12 @@ public class ProfessionalRepository : IProfessionalRepository
         return await _context.Professionals.CountAsync();
     }
 
+    public async Task<bool> ExistsByPhoneAsync(string phone, int? excludeId = null)
+    {
+        return await _context.Professionals
+            .AnyAsync(p => p.Phone == phone && (excludeId == null || p.Id != excludeId));
+    }
+
     public async Task AddAsync(Professional professional)
     {
         await _context.Professionals.AddAsync(professional);

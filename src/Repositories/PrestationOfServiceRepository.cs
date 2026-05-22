@@ -37,6 +37,12 @@ public class PrestationOfServiceRepository : IPrestationOfServiceRepository
         return await _context.PrestationsOfService.CountAsync();
     }
 
+    public async Task<bool> ExistsByNameAsync(string name, int? excludeId = null)
+    {
+        return await _context.PrestationsOfService
+            .AnyAsync(p => p.Name == name && (excludeId == null || p.Id != excludeId));
+    }
+
     public async Task AddAsync(PrestationOfService prestationOfService)
     {
         await _context.PrestationsOfService.AddAsync(prestationOfService);

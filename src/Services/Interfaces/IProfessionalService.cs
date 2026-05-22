@@ -1,15 +1,14 @@
 using BarbershopApi.Models;
 
-namespace BarbershopApi.Repositories.Interfaces;
+namespace BarbershopApi.Services.Interfaces;
 
-public interface IProfessionalRepository
+public interface IProfessionalService
 {
     Task<IEnumerable<Professional>> GetAllAsync();
     Task<Professional?> GetByIdAsync(int id);
     Task<IEnumerable<Professional>> GetByNameAsync(string name);
     Task<int> GetCountAsync();
-    Task<bool> ExistsByPhoneAsync(string phone, int? excludeId = null);
-    Task AddAsync(Professional professional);
+    Task CreateAsync(Professional professional);
     Task UpdateAsync(Professional professional);
     Task DeleteAsync(int id);
 }
