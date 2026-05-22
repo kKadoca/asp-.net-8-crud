@@ -12,17 +12,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// --- Persistence (swap UseSqlite for UseNpgsql/UseSqlServer here to change provider) ---
+//  Persistence --- (é possível trocar UseSqlite por UseNpgsql/UseSqlServer pra mudar o provedor) ---
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// --- Repositories ---
+//  Repositories
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IProfessionalRepository, ProfessionalRepository>();
 builder.Services.AddScoped<IPrestationOfServiceRepository, PrestationOfServiceRepository>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 
-// --- Services ---
+//  Services
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IProfessionalService, ProfessionalService>();
 builder.Services.AddScoped<IPrestationOfServiceService, PrestationOfServiceService>();

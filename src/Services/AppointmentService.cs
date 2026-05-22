@@ -2,6 +2,7 @@ using BarbershopApi.Exceptions;
 using BarbershopApi.Models;
 using BarbershopApi.Repositories.Interfaces;
 using BarbershopApi.Services.Interfaces;
+using BarbershopApi.States.Appointment;
 
 namespace BarbershopApi.Services;
 
@@ -37,22 +38,23 @@ public class AppointmentService : IAppointmentService
     public async Task CreateAsync(Appointment appointment)
     {
         ValidateForeignKeys(appointment);
-				
-				if (appointment.DateTime <= DateTime.UtcNow)
-            throw new BusinessRuleException("Appointment must be scheduled in the future.");
-
+        AppointmentState.For(appointment.Status).ValidateDateTime(appointment.DateTime);
         await _repository.AddAsync(appointment);
     }
 
     public async Task UpdateAsync(Appointment appointment)
     {
-        _ = await _repository.GetByIdAsync(appointment.Id)
+        var existing = await _repository.GetByIdAsync(appointment.Id)
             ?? throw new NotFoundException(nameof(Appointment), appointment.Id);
 
         ValidateForeignKeys(appointment);
-        
-				if (appointment.DateTime <= DateTime.UtcNow)
-            throw new BusinessRuleException("Appointment must be scheduled in the future.");
+
+        var currentState = AppointmentState.For(existing.Status);
+
+        if (existing.Status != appointment.Status)
+            currentState.EnsureCanTransitionTo(appointment.Status);
+
+        AppointmentState.For(appointment.Status).ValidateDateTime(appointment.DateTime);
 
         await _repository.UpdateAsync(appointment);
     }
