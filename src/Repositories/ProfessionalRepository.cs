@@ -5,64 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BarbershopApi.Repositories;
 
-public class ProfessionalRepository : IProfessionalRepository
+public class ProfessionalRepository : BaseRepository<Professional>, IProfessionalRepository
 {
-    private readonly AppDbContext _context;
+    public ProfessionalRepository(AppDbContext context) : base(context) { }
 
-    public ProfessionalRepository(AppDbContext context)
-    {
-        _context = context;
-    }
+    protected override DbSet<Professional> DbSet => Context.Professionals;
 
-    public async Task<IEnumerable<Professional>> GetAllAsync()
-    {
-        return await _context.Professionals.ToListAsync();
-    }
+    public async Task<Professional?> GetByIdAsync(int id) =>
+        await DbSet.FirstOrDefaultAsync(p => p.Id == id);
 
-    public async Task<Professional?> GetByIdAsync(int id)
-    {
-        return await _context.Professionals
-            .FirstOrDefaultAsync(p => p.Id == id);
-    }
+    public async Task<IEnumerable<Professional>> GetByNameAsync(string name) =>
+        await DbSet.Where(p => p.Name.Contains(name)).ToListAsync();
 
-    public async Task<IEnumerable<Professional>> GetByNameAsync(string name)
-    {
-        return await _context.Professionals
-            .Where(p => p.Name.Contains(name))
-            .ToListAsync();
-    }
-
-    public async Task<int> GetCountAsync()
-    {
-        return await _context.Professionals.CountAsync();
-    }
-
-    public async Task<bool> ExistsByPhoneAsync(string phone, int? excludeId = null)
-    {
-        return await _context.Professionals
-            .AnyAsync(p => p.Phone == phone && (excludeId == null || p.Id != excludeId));
-    }
-
-    public async Task AddAsync(Professional professional)
-    {
-        await _context.Professionals.AddAsync(professional);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateAsync(Professional professional)
-    {
-        _context.Professionals.Update(professional);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(int id)
-    {
-        var professional = await _context.Professionals.FindAsync(id);
-        if (professional is not null)
-        {
-            professional.IsDeleted = true;
-            professional.DeletedAt = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
-        }
-    }
+    public async Task<bool> ExistsByPhoneAsync(string phone, int? excludeId = null) =>
+        await DbSet.AnyAsync(p => p.Phone == phone && (excludeId == null || p.Id != excludeId));
 }

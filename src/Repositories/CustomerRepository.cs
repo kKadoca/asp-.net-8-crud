@@ -5,64 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BarbershopApi.Repositories;
 
-public class CustomerRepository : ICustomerRepository
+public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
 {
-    private readonly AppDbContext _context;
+    public CustomerRepository(AppDbContext context) : base(context) { }
 
-    public CustomerRepository(AppDbContext context)
-    {
-        _context = context;
-    }
+    protected override DbSet<Customer> DbSet => Context.Customers;
 
-    public async Task<IEnumerable<Customer>> GetAllAsync()
-    {
-        return await _context.Customers.ToListAsync();
-    }
+    public async Task<Customer?> GetByIdAsync(int id) =>
+        await DbSet.FirstOrDefaultAsync(c => c.Id == id);
 
-    public async Task<Customer?> GetByIdAsync(int id)
-    {
-        return await _context.Customers
-					.FirstOrDefaultAsync(a => a.Id == id);
-    }
+    public async Task<IEnumerable<Customer>> GetByNameAsync(string name) =>
+        await DbSet.Where(c => c.Name.Contains(name)).ToListAsync();
 
-    public async Task<IEnumerable<Customer>> GetByNameAsync(string name)
-    {
-        return await _context.Customers
-					.Where(a => a.Name.Contains(name))
-					.ToListAsync();
-    }
-
-    public async Task<int> GetCountAsync()
-    {
-        return await _context.Customers.CountAsync();
-    }
-
-    public async Task<bool> ExistsByEmailAsync(string email, int? excludeId = null)
-    {
-        return await _context.Customers
-            .AnyAsync(c => c.Email == email && (excludeId == null || c.Id != excludeId));
-    }
-
-    public async Task AddAsync(Customer customer)
-    {
-        await _context.Customers.AddAsync(customer);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateAsync(Customer customer)
-    {
-        _context.Customers.Update(customer);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(int id)
-    {
-        var customer = await _context.Customers.FindAsync(id);
-        if (customer is not null)
-        {
-            customer.IsDeleted = true;
-            customer.DeletedAt = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
-        }
-    }
+    public async Task<bool> ExistsByEmailAsync(string email, int? excludeId = null) =>
+        await DbSet.AnyAsync(c => c.Email == email && (excludeId == null || c.Id != excludeId));
 }
