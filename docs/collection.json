@@ -1,0 +1,304 @@
+{
+  "info": {
+    "name": "Barbershop API",
+    "description": "Barbershop Scheduling REST API — ASP.NET 8",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5152",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers", "host": ["{{baseUrl}}"], "path": ["api", "customers"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"555-1234\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/customers", "host": ["{{baseUrl}}"], "path": ["api", "customers"] }
+          }
+        },
+        {
+          "name": "Get Customer by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/customers/1", "host": ["{{baseUrl}}"], "path": ["api", "customers", "1"] }
+          }
+        },
+        {
+          "name": "Get Customer Count",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/customers/count", "host": ["{{baseUrl}}"], "path": ["api", "customers", "count"] }
+          }
+        },
+        {
+          "name": "Search Customers by Name",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/search?name=John",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "customers", "search"],
+              "query": [{ "key": "name", "value": "John" }]
+            }
+          }
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers/1", "host": ["{{baseUrl}}"], "path": ["api", "customers", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe Updated\",\n  \"email\": \"john.updated@example.com\",\n  \"phone\": \"555-9999\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/customers/1", "host": ["{{baseUrl}}"], "path": ["api", "customers", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Professionals",
+      "item": [
+        {
+          "name": "Create Professional",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/professionals", "host": ["{{baseUrl}}"], "path": ["api", "professionals"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carlos Silva\",\n  \"phone\": \"555-5678\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Professionals",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/professionals", "host": ["{{baseUrl}}"], "path": ["api", "professionals"] }
+          }
+        },
+        {
+          "name": "Get Professional by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/professionals/1", "host": ["{{baseUrl}}"], "path": ["api", "professionals", "1"] }
+          }
+        },
+        {
+          "name": "Get Professional Count",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/professionals/count", "host": ["{{baseUrl}}"], "path": ["api", "professionals", "count"] }
+          }
+        },
+        {
+          "name": "Search Professionals by Name",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/professionals/search?name=Carlos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "professionals", "search"],
+              "query": [{ "key": "name", "value": "Carlos" }]
+            }
+          }
+        },
+        {
+          "name": "Update Professional",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/professionals/1", "host": ["{{baseUrl}}"], "path": ["api", "professionals", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carlos Silva Updated\",\n  \"phone\": \"555-0000\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Professional",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/professionals/1", "host": ["{{baseUrl}}"], "path": ["api", "professionals", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Prestations of Service",
+      "item": [
+        {
+          "name": "Create Prestation of Service",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/prestationsofservice", "host": ["{{baseUrl}}"], "path": ["api", "prestationsofservice"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Haircut + Beard\",\n  \"description\": \"Full grooming package\",\n  \"price\": 45.00,\n  \"durationMinutes\": 60\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Prestations of Service",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/prestationsofservice", "host": ["{{baseUrl}}"], "path": ["api", "prestationsofservice"] }
+          }
+        },
+        {
+          "name": "Get Prestation by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/prestationsofservice/1", "host": ["{{baseUrl}}"], "path": ["api", "prestationsofservice", "1"] }
+          }
+        },
+        {
+          "name": "Get Prestation Count",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/prestationsofservice/count", "host": ["{{baseUrl}}"], "path": ["api", "prestationsofservice", "count"] }
+          }
+        },
+        {
+          "name": "Search Prestations by Name",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/prestationsofservice/search?name=Haircut",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "prestationsofservice", "search"],
+              "query": [{ "key": "name", "value": "Haircut" }]
+            }
+          }
+        },
+        {
+          "name": "Update Prestation of Service",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/prestationsofservice/1", "host": ["{{baseUrl}}"], "path": ["api", "prestationsofservice", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Haircut + Beard\",\n  \"description\": \"Full grooming — premium\",\n  \"price\": 55.00,\n  \"durationMinutes\": 75\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Prestation of Service",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/prestationsofservice/1", "host": ["{{baseUrl}}"], "path": ["api", "prestationsofservice", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "Create Appointment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/appointments", "host": ["{{baseUrl}}"], "path": ["api", "appointments"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateTime\": \"2026-06-01T10:00:00\",\n  \"status\": \"Scheduled\",\n  \"customerId\": 1,\n  \"professionalId\": 1,\n  \"prestationOfServiceId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Appointments",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/appointments", "host": ["{{baseUrl}}"], "path": ["api", "appointments"] }
+          }
+        },
+        {
+          "name": "Get Appointment by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/appointments/1", "host": ["{{baseUrl}}"], "path": ["api", "appointments", "1"] }
+          }
+        },
+        {
+          "name": "Get Appointment Count",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/appointments/count", "host": ["{{baseUrl}}"], "path": ["api", "appointments", "count"] }
+          }
+        },
+        {
+          "name": "Search Appointments by Status — Scheduled",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/appointments/search?status=Scheduled",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "appointments", "search"],
+              "query": [{ "key": "status", "value": "Scheduled" }]
+            }
+          }
+        },
+        {
+          "name": "Search Appointments by Status — Completed",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/appointments/search?status=Completed",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "appointments", "search"],
+              "query": [{ "key": "status", "value": "Completed" }]
+            }
+          }
+        },
+        {
+          "name": "Update Appointment",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/appointments/1", "host": ["{{baseUrl}}"], "path": ["api", "appointments", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateTime\": \"2026-06-01T10:00:00\",\n  \"status\": \"Completed\",\n  \"customerId\": 1,\n  \"professionalId\": 1,\n  \"prestationOfServiceId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Appointment",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/appointments/1", "host": ["{{baseUrl}}"], "path": ["api", "appointments", "1"] }
+          }
+        }
+      ]
+    }
+  ]
+}
