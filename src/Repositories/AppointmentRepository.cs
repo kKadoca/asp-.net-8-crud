@@ -64,7 +64,8 @@ public class AppointmentRepository : IAppointmentRepository
         var appointment = await _context.Appointments.FindAsync(id);
         if (appointment is not null)
         {
-            _context.Appointments.Remove(appointment);
+            appointment.IsDeleted = true;
+            appointment.DeletedAt = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
     }

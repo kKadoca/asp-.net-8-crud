@@ -11,4 +11,12 @@ public class AppDbContext : DbContext
     public DbSet<Professional> Professionals => Set<Professional>();
     public DbSet<PrestationOfService> PrestationsOfService => Set<PrestationOfService>();
     public DbSet<Appointment> Appointments => Set<Appointment>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Customer>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Professional>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<PrestationOfService>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Appointment>().HasQueryFilter(e => !e.IsDeleted);
+    }
 }

@@ -60,7 +60,8 @@ public class CustomerRepository : ICustomerRepository
         var customer = await _context.Customers.FindAsync(id);
         if (customer is not null)
         {
-            _context.Customers.Remove(customer);
+            customer.IsDeleted = true;
+            customer.DeletedAt = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
     }

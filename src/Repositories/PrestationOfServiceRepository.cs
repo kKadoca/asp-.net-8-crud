@@ -60,7 +60,8 @@ public class PrestationOfServiceRepository : IPrestationOfServiceRepository
         var prestationOfService = await _context.PrestationsOfService.FindAsync(id);
         if (prestationOfService is not null)
         {
-            _context.PrestationsOfService.Remove(prestationOfService);
+            prestationOfService.IsDeleted = true;
+            prestationOfService.DeletedAt = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
     }

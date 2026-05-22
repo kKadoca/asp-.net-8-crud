@@ -36,10 +36,10 @@ public class AppointmentService : IAppointmentService
 
     public async Task CreateAsync(Appointment appointment)
     {
-        if (appointment.DateTime <= DateTime.UtcNow)
-            throw new BusinessRuleException("Appointment must be scheduled in the future.");
-
         ValidateForeignKeys(appointment);
+				
+				if (appointment.DateTime <= DateTime.UtcNow)
+            throw new BusinessRuleException("Appointment must be scheduled in the future.");
 
         await _repository.AddAsync(appointment);
     }
@@ -49,10 +49,10 @@ public class AppointmentService : IAppointmentService
         _ = await _repository.GetByIdAsync(appointment.Id)
             ?? throw new NotFoundException(nameof(Appointment), appointment.Id);
 
-        if (appointment.DateTime <= DateTime.UtcNow)
-            throw new BusinessRuleException("Appointment must be scheduled in the future.");
-
         ValidateForeignKeys(appointment);
+        
+				if (appointment.DateTime <= DateTime.UtcNow)
+            throw new BusinessRuleException("Appointment must be scheduled in the future.");
 
         await _repository.UpdateAsync(appointment);
     }

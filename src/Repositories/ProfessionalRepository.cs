@@ -60,7 +60,8 @@ public class ProfessionalRepository : IProfessionalRepository
         var professional = await _context.Professionals.FindAsync(id);
         if (professional is not null)
         {
-            _context.Professionals.Remove(professional);
+            professional.IsDeleted = true;
+            professional.DeletedAt = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
     }
