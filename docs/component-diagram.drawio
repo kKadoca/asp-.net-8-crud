@@ -1,0 +1,116 @@
+<mxfile host="65bd71144e">
+    <diagram id="component-diagram" name="Component Diagram">
+        <mxGraphModel dx="1267" dy="1088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="clients-group" value="Clients" style="shape=mxgraph.uml25.package;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="210" width="210" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="app" value="Mobile / Web App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=0;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="250" width="170" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="dev" value="Postman" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=0;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="310" width="170" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="cloud-group" value="☁️ Azure App Service" style="shape=mxgraph.uml25.package;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="212.5" width="340" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;fillColor=#FF0B0B;strokeColor=#FF0B0B;entryX=0.993;entryY=0.468;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" source="mw" target="clients-group" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="290" y="284" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="4xx / 5xx" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FF0B0B;" parent="2" vertex="1" connectable="0">
+                    <mxGeometry x="0.2057" y="-1" relative="1" as="geometry">
+                        <mxPoint x="23" y="9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="mw" value="ExceptionHandlingMiddleware&lt;br&gt;(intercepta todas as requests)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=0;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="250" width="260" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="api-group" value="ASP.NET 8 Web API" style="shape=mxgraph.uml25.package;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="315" width="300" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="ct" value="Camada HTTP&lt;br&gt;(Controllers)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="515" y="360" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv" value="Regras de Negócio&lt;br&gt;(Services)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="360" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="st" value="State Pattern" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="515" y="430" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="rp" value="Acesso a Dados&lt;br&gt;(Repository)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="430" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="data-group" value="Data Layer" style="shape=mxgraph.uml25.package;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="580" width="340" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="devdb" value="SQLite&#xa;Development" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="505" y="620" width="100" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="proddb" value="Azure SQL&#xa;Production" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="620" width="100" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#333333;fontSize=10;exitX=1.005;exitY=0.326;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="clients-group" target="mw" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                    <Array as="points"/>
+                </mxCell>
+                <mxCell id="e1-label" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#333333;" parent="e1" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2" relative="1" as="geometry">
+                        <mxPoint x="17" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="HTTPS / REST" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="e1" vertex="1" connectable="0">
+                    <mxGeometry x="0.0759" y="3" relative="1" as="geometry">
+                        <mxPoint x="-13" y="-8" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e3" style="rounded=1;strokeColor=#333333;entryX=0.458;entryY=-0.021;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="mw" target="ct" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="570" y="320"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e4" style="rounded=1;strokeColor=#333333;" parent="1" source="ct" target="sv" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="rounded=1;strokeColor=#333333;entryX=0.946;entryY=-0.002;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="sv" target="st" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" style="rounded=1;strokeColor=#333333;" parent="1" source="sv" target="rp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" style="rounded=1;strokeColor=#333333;dashed=1;" parent="1" source="rp" target="devdb" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="555" y="540"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e7-label" value="dev" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#666666;" parent="e7" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2" relative="1" as="geometry">
+                        <mxPoint x="-21" y="23" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e8" style="rounded=1;strokeColor=#333333;" parent="1" source="rp" target="proddb" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="720" y="550"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e8-label" value="prod" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#666666;" parent="e8" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2" relative="1" as="geometry">
+                        <mxPoint x="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Helvetica; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Barbershop API — Component Diagram&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="60" width="440" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
