@@ -1,6 +1,6 @@
 # Entity Relationship Diagram
 
-> Barbershop Scheduling API — Phase 1 (MVC + ASP.NET)
+> Barbershop Scheduling API
 
 ```mermaid
 ---
