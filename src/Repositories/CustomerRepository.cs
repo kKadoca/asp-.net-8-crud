@@ -12,7 +12,7 @@ public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     protected override DbSet<Customer> DbSet => Context.Customers;
 
     public async Task<Customer?> GetByIdAsync(int id) =>
-        await DbSet.FirstOrDefaultAsync(c => c.Id == id);
+        await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
 
     public async Task<IEnumerable<Customer>> GetByNameAsync(string name) =>
         await DbSet.Where(c => c.Name.Contains(name)).ToListAsync();

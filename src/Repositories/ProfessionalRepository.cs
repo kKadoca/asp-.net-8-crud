@@ -12,7 +12,7 @@ public class ProfessionalRepository : BaseRepository<Professional>, IProfessiona
     protected override DbSet<Professional> DbSet => Context.Professionals;
 
     public async Task<Professional?> GetByIdAsync(int id) =>
-        await DbSet.FirstOrDefaultAsync(p => p.Id == id);
+        await DbSet.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
 
     public async Task<IEnumerable<Professional>> GetByNameAsync(string name) =>
         await DbSet.Where(p => p.Name.Contains(name)).ToListAsync();

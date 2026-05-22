@@ -20,6 +20,7 @@ public class AppointmentRepository : BaseRepository<Appointment>, IAppointmentRe
 
     public async Task<Appointment?> GetByIdAsync(int id) =>
         await DbSet
+            .AsNoTracking()
             .Include(a => a.Customer)
             .Include(a => a.Professional)
             .Include(a => a.PrestationOfService)
